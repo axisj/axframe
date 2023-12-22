@@ -20,7 +20,21 @@ Applications developed with AXFrame have the following characteristics.
 - Easy API management
 
 ## Features
-- TBD
+- 로그인 템플릿
+- 탭 프레임 템플릿
+- API연동되는 메뉴 컴포넌트
+- 풀스크린모드 지원
+- 테마 확장기능 제공
+- 다국엉 확장기능 제공
+- 권한 확장기능 제공
+- 체계적인 API관리 시스템
+- 페이지 자동생성 기능
+- 페이지 사용자 입력상태 유지 기능
+- 페이지 템플릿 확장 기능 제공
+- 에러 핸들링 확장 기능 제공
+- 다이얼로그(Alert, Confirm, Prompt) 확장 기능 제공
+- 빌드/배포 스크립트 제공
+- 빠른 개발환경 제공 (Fast Hot Module Replacement)
 
 ## Requirement
 
