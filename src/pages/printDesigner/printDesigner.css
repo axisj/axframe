@@ -1,0 +1,10 @@
+
+:root {
+    --panel-border-color: #444;
+    --panel-header-bg: #444;
+    --panel-header-color: #fff;
+    --panel-tool-color: #444;
+    --panel-edit-color: #0b99ff;
+    --panel-edit-bg: rgba(76, 174, 255, 0.13);
+    --layer-text-border: #888;
+}

@@ -5,6 +5,16 @@ export const getAppMenuMockData: AppMenuGroup[] = [
     menuGrpCd: "_",
     multiLanguage: { ko: "", en: "" },
     children: [
+      {
+        multiLanguage: {
+          en: "Print Designer",
+          ko: "프린트 디자이너",
+        },
+        iconTy: "Default",
+        progCd: "PRINT_DESIGNER",
+        children: [],
+      },
+
       /* ##INSERT_MENU_POSITION## */
     ],
     userGroup: ["ROLE_ADMIN", "ROLE_ASP", "ROLE_USER"],
@@ -121,6 +131,8 @@ export const signInMockData: User = {
     "EXAMPLE_LIST_WITH_LIST",
     "EXAMPLE_THREE_LIST",
     "EXAMPLE_STATS",
+    "PRINT_DESIGNER",
+
     /* ##INSERT_PROGRAM_TYPE_POSITION## */
   ],
   email: "tom@axisj.com",

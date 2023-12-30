@@ -24,6 +24,7 @@ const ExampleThreeList = React.lazy(() => import("@core/pages/THREE_LIST/App"));
 const ExampleStats = React.lazy(() => import("@core/pages/STATS/App"));
 
 const Home = React.lazy(() => import("pages/home/App"));
+const PrintDesigner = React.lazy(() => import("pages/printDesigner/App"));
 const SignIn = React.lazy(() => import("pages/signIn/App"));
 const Error404 = React.lazy(() => import("pages/error/Error404"));
 
@@ -69,6 +70,7 @@ function PageRoute() {
           <Route path={EXAMPLE_ROUTERS.LIST_WITH_FORM_ROW.path} element={<ExampleListWithFormRow />} />
           <Route path={EXAMPLE_ROUTERS.THREE_LIST.path} element={<ExampleThreeList />} />
           <Route path={EXAMPLE_ROUTERS.STATS.path} element={<ExampleStats />} />
+          <Route path={ROUTES.PRINT_DESIGNER.path} element={<PrintDesigner />} />
 
           {/* ##INSERT_ROUTE_POSITION## */}
 

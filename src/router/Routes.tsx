@@ -23,6 +23,10 @@ const routes = {
     path: "",
     hideTab: true,
   },
+  PRINT_DESIGNER: {
+    path: "print-designer",
+    program_type: PROGRAM_TYPES.PRINT_DESIGNER,
+  },
   /* ##INSERT_ROUTE_POSITION## */
 };
 
