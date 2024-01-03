@@ -12,6 +12,7 @@ import "@core/utils/console";
 import "./customizeAntd";
 import { getAppData } from "./@core/utils/store";
 import { setApiHeader } from "./services/apiWrapper.ts";
+import "locales";
 
 const App: React.FC = () => {
   const { switcher, themes } = useThemeSwitcher();
