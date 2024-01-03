@@ -1,3 +1,4 @@
 {
-
+  "'${label}'을(를) 입력해주세요.": "'${label}' is required!",
+  "loginUserNameLabel": "<b>{{userNm}}</b>"
 }

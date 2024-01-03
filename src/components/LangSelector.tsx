@@ -1,10 +1,10 @@
-import React from "react";
+import { AXFILanguage } from "@axframe/icon";
 import { IconText } from "@core/components/common";
 import { Dropdown } from "antd";
 import { MenuProps } from "antd/lib/menu";
-import { useTranslation } from "react-i18next";
+import React from "react";
 import { useAppStore } from "stores";
-import { AXFILanguage } from "@axframe/icon";
+import { useI18n } from "../hooks";
 
 interface Props {
   hideLabel?: boolean;
@@ -16,7 +16,7 @@ const LanguageLabel = {
 };
 
 function LangSelector({ hideLabel }: Props) {
-  const { i18n } = useTranslation();
+  const { i18n } = useI18n();
   const currentLanguage = useAppStore((s) => s.currentLanguage);
   const setLanguage = useAppStore((s) => s.setLanguage);
 

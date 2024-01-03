@@ -1,4 +1,4 @@
-import { LanguageType } from "../i18n";
+import { LanguageType } from "../depk-i18n";
 import { MenuItemType } from "rc-menu/lib/interface";
 import { PROGRAM_TYPES } from "./@programTypes";
 

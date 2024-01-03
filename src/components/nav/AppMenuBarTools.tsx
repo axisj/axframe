@@ -1,15 +1,16 @@
-import styled from "@emotion/styled";
-import React from "react";
-import { useAppStore, useUserStore } from "stores";
-import { SMixinFlexRow } from "@core/styles/emotion";
-import { useI18n } from "@core/hooks";
-import { User } from "services";
-import { IconLogout, IconUser } from "../icons";
-import { Button, Dropdown } from "antd";
-import UserInfoDropdown from "./UserInfoDropdown";
-import { IconText } from "@core/components/common";
-import { errorHandling } from "utils";
 import { FullscreenExitOutlined, FullscreenOutlined } from "@ant-design/icons";
+import { IconText } from "@core/components/common";
+import { useBtnI18n, useI18n } from "@core/hooks";
+import { SMixinFlexRow } from "@core/styles/emotion";
+import styled from "@emotion/styled";
+import { Button, Dropdown } from "antd";
+import React from "react";
+import { User } from "services";
+import { useAppStore, useUserStore } from "stores";
+import { errorHandling } from "utils";
+import { dangerouslySetInnerHTML } from "../../@core/utils/string";
+import { IconLogout, IconUser } from "../icons";
+import UserInfoDropdown from "./UserInfoDropdown";
 
 interface StyleProps {
   sideMenuOpened?: boolean;
@@ -21,12 +22,13 @@ interface Props extends StyleProps {
 }
 
 function AppMenuBarTools({}: Props) {
+  const { t } = useI18n();
+  const btnT = useBtnI18n();
   const [signOutSpinning, setSignOutSpinning] = React.useState(false);
   const fullScreen = useAppStore((s) => s.fullScreen);
   const setFullScreen = useAppStore((s) => s.setFullScreen);
   const me = useUserStore((s) => s.me);
   const signOut = useUserStore((s) => s.signOut);
-  const { t } = useI18n();
   const { userNm } = me ?? {};
 
   const handleClickSignOut = React.useCallback(async () => {
@@ -57,14 +59,14 @@ function AppMenuBarTools({}: Props) {
         <Dropdown dropdownRender={() => <UserInfoDropdown onSignOut={handleClickSignOut} />}>
           <div role={"user-info"}>
             <IconText icon={<IconUser fontSize={18} />} block>
-              <b>{userNm}</b>님
+              <span {...dangerouslySetInnerHTML(t("loginUserNameLabel", { userNm }))} />
             </IconText>
           </div>
         </Dropdown>
 
         <div role={"logout"} onClick={handleClickSignOut}>
           <IconText icon={<IconLogout fontSize={20} />} loading={signOutSpinning}>
-            {t.button.signOut}
+            {btnT("로그아웃")}
           </IconText>
         </div>
       </ToolBar>

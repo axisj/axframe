@@ -11,10 +11,12 @@ import "styles/index.less";
 import "@core/utils/console";
 import "./customizeAntd";
 import { getAppData } from "./@core/utils/store";
+import { useI18n } from "./hooks";
 import { setApiHeader } from "./services/apiWrapper.ts";
-import "locales";
+import "i18n";
 
 const App: React.FC = () => {
+  const { t } = useI18n();
   const { switcher, themes } = useThemeSwitcher();
   const [storeLoaded, setStoreLoaded] = React.useState(false);
   const appStoreLoaded = useAppStore((s) => s.loaded);
@@ -55,7 +57,14 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={themePalette[theme]}>
       <StoreSpinner spinning={!storeLoaded} />
-      <ConfigProvider theme={themePalette[theme]}>
+      <ConfigProvider
+        theme={themePalette[theme]}
+        form={{
+          validateMessages: {
+            required: t("'${label}'을(를) 입력해주세요."),
+          },
+        }}
+      >
         {storeLoaded && (
           <BrowserRouter>
             <PageRoute />

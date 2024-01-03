@@ -1,12 +1,12 @@
-import { css } from "@emotion/react";
-import { Dropdown } from "antd";
-import React from "react";
-import styled from "@emotion/styled";
 import { AXFIArrowDown } from "@axframe/icon";
-import { SMixinFlexRow } from "@core/styles/emotion";
-import { useI18n } from "@core/hooks/useI18n";
 import { usePageTabStore } from "@core/stores/usePageTabStore";
+import { SMixinFlexRow } from "@core/styles/emotion";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { Dropdown } from "antd";
 import { useLink } from "hooks";
+import React from "react";
+import { useAppStore } from "../../stores";
 import { darken } from "../../styles/palette/colorUtil";
 
 interface StyleProps {
@@ -16,7 +16,7 @@ interface StyleProps {
 interface Props extends StyleProps {}
 
 function TabItemMore({}: Props) {
-  const { currentLanguage } = useI18n();
+  const currentLanguage = useAppStore((s) => s.currentLanguage);
   const { linkByTo } = useLink();
   const pages = usePageTabStore((s) => s.pages);
   const [visible, setVisible] = React.useState(false);
