@@ -7,6 +7,7 @@ import { AXFIArrowLogIn, AXFIMoon, AXFISun } from "@axframe/icon";
 import { SMixinFlexColumn, SMixinFlexRow } from "@core/styles/emotion";
 import { useDidMountEffect, useI18n, useSpinning } from "hooks";
 import { getTrimNonEmptyRegExp } from "@core/utils/formPatterns/getTrimNonEmptyRegExp";
+import { useTranslation } from "react-i18next";
 import { UserService } from "services";
 import { useAppStore, useUserStore } from "stores";
 import { LangSelector } from "components/LangSelector";
@@ -30,6 +31,7 @@ export interface SignInFormItem {
 function App({}: Props) {
   const setMe = useUserStore((s) => s.setMe);
   const { t } = useI18n();
+  const { t: tt } = useTranslation();
   const { spinning, setSpinning } = useSpinning<{ signIn: boolean }>();
   const [open, setOpen] = React.useState(false);
   const theme = useAppStore((s) => s.theme);
@@ -204,6 +206,8 @@ function App({}: Props) {
                   />
                 </div>
               )}
+
+              {tt("Welcome to React")}
             </SignInBoxFooter>
           </SignInFormBox>
         </SignInBox>
