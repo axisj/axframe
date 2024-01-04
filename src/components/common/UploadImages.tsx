@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, Modal, Upload, UploadFile } from "antd";
-import { useI18n } from "@core/hooks";
+import { useI18n } from "hooks";
 import { RcFile, UploadProps } from "antd/es/upload";
 import { getAppData } from "@core/utils/store";
 import { UploadOutlined } from "@ant-design/icons";

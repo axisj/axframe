@@ -1,3 +1,39 @@
 {
-
+  "'${label}'을(를) 입력해주세요.": "'${label}' is required!",
+  "loginUserNameLabel": "<b>{{userNm}}</b>",
+  "contextMenu.closeTag": "Close",
+  "contextMenu.closeOtherTabs": "Close other tabs",
+  "contextMenu.closeTabsToRight": "Close right tabs",
+  "contextMenu.refresh": "Refresh",
+  "msg": {
+    "deleteConfirm": "Are you sure delete?"
+  },
+  "api-error": {
+    "1110": "Invalid code.",
+    "1120": "Invalid field value",
+    "1130": "Invalid format",
+    "1140": "Missing field value",
+    "1150": "Download material not found.",
+    "1160": "Upload Size Exceeded",
+    "1170": "File extension error",
+    "1180": "Type error",
+    "1190": "Parameter type error",
+    "1210": "Null Point Exception",
+    "2110": "Data not found.",
+    "2120": "You cannot delete it.",
+    "2230": "You cannot modify it.",
+    "2240": "Unable to save.",
+    "2250": "SQL syntax error",
+    "2260": "SQL duplicate key error",
+    "2270": "SQL DataIntegrityViolation",
+    "4110": "Login failed",
+    "4120": "Password mismatch",
+    "4130": "Access Error",
+    "4140": "Throwable",
+    "4150": "Method Argument",
+    "4160": "Runtime Exception",
+    "4170": "Remote Exception",
+    "4180": "The token has expired.",
+    "9110": "Token is invalid."
+  }
 }
