@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { AXFIClose } from "@axframe/icon";
-import { Page, usePageTabStore } from "stores";
+import { useTranslation } from "react-i18next";
+import { Page, useAppStore, usePageTabStore } from "stores";
 import { SMixinFlexRow } from "@core/styles/emotion";
 import { css } from "@emotion/react";
-import { useI18n } from "@core/hooks/useI18n";
 import { IconHomeFlat } from "components/icons";
 
 interface StyleProps {
@@ -22,7 +22,7 @@ interface Props extends StyleProps {
 
 function TabItem({ tabUuid, tabInfo, onContextMenu, onRemoveTab, onClickTab }: Props) {
   const activeTabUuid = usePageTabStore((s) => s.activeTabUuid);
-  const { currentLanguage } = useI18n();
+  const currentLanguage = useAppStore((s) => s.currentLanguage);
 
   return (
     <TabItemContainer

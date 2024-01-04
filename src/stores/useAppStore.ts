@@ -1,7 +1,7 @@
 import buildStore from "@core/stores/buildStore";
 import { StoreActions } from "@core/stores/types";
 import { ThemeType } from "styles/theme";
-import { LanguageType } from "i18n";
+import i18n, { LanguageType } from "i18n";
 import { AppMenuGroup, AppService } from "../services";
 
 export interface AppModel {
@@ -68,6 +68,9 @@ export const useAppStore = buildStore<AppStore>("app", 1, (set, get) => ({
 useAppStore.persist.onFinishHydration((state) => {
   console.log("useAppStore.onFinishHydration");
   state.appMenuGroupLoaded = false;
+
+  i18n.changeLanguage(state.currentLanguage);
+
   if (!state.loaded) {
     state.setLoaded(true);
   }

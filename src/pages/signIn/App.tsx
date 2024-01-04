@@ -1,21 +1,21 @@
 import { IdcardOutlined, LockOutlined } from "@ant-design/icons";
+
+import { AXFIArrowLogIn, AXFIMoon, AXFISun } from "@axframe/icon";
+import { IconText } from "@core/components/common";
+import { SMixinFlexColumn, SMixinFlexRow } from "@core/styles/emotion";
+import { getTrimNonEmptyRegExp } from "@core/utils/formPatterns/getTrimNonEmptyRegExp";
 import styled from "@emotion/styled";
 import type { TourProps } from "antd";
 import { Button, Checkbox, Divider, Form, Input, Space, Switch, Tour } from "antd";
-
-import { AXFIArrowLogIn, AXFIMoon, AXFISun } from "@axframe/icon";
-import { SMixinFlexColumn, SMixinFlexRow } from "@core/styles/emotion";
-import { useDidMountEffect, useI18n, useSpinning } from "hooks";
-import { getTrimNonEmptyRegExp } from "@core/utils/formPatterns/getTrimNonEmptyRegExp";
+import { IconAXFrameOpened } from "components/icons";
+import { LangSelector } from "components/LangSelector";
+import { useBtnI18n, useDidMountEffect, useI18n, useSpinning } from "hooks";
+import React from "react";
 import { UserService } from "services";
 import { useAppStore, useUserStore } from "stores";
-import { LangSelector } from "components/LangSelector";
-import { IconAXFrameOpened } from "components/icons";
-import { IconText } from "@core/components/common";
-import React from "react";
-import { errorHandling } from "../../utils";
 import { mediaMin } from "../../styles/mediaQueries.ts";
 import { alpha } from "../../styles/palette/colorUtil.ts";
+import { errorHandling } from "../../utils";
 
 interface Props {
   onSignIn?: (values: SignInFormItem) => Promise<void>;
@@ -28,8 +28,10 @@ export interface SignInFormItem {
 }
 
 function App({}: Props) {
+  const { t } = useI18n("login");
+  const btnT = useBtnI18n();
   const setMe = useUserStore((s) => s.setMe);
-  const { t } = useI18n();
+
   const { spinning, setSpinning } = useSpinning<{ signIn: boolean }>();
   const [open, setOpen] = React.useState(false);
   const theme = useAppStore((s) => s.theme);
@@ -125,44 +127,38 @@ function App({}: Props) {
             <SignInBoxBody>
               <Form<SignInFormItem> form={form} onFinish={onSignIn} layout={"vertical"}>
                 <Form.Item
-                  label={t.pages.signIn.label.userId}
+                  label={t("로그인아이디")}
                   name='userId'
                   rules={[
                     {
                       required: true,
                       pattern: getTrimNonEmptyRegExp(),
-                      message: t.pages.signIn.msg.userId_empty,
                     },
                   ]}
                 >
-                  <Input prefix={<IdcardOutlined />} placeholder={t.pages.signIn.placeholder.userId} allowClear />
+                  <Input prefix={<IdcardOutlined />} allowClear />
                 </Form.Item>
 
                 <Form.Item
-                  label={t.pages.signIn.label.password}
+                  label={t("비밀번호")}
                   name='password'
                   rules={[
                     {
                       required: true,
                       pattern: getTrimNonEmptyRegExp(),
-                      message: t.pages.signIn.msg.password_empty,
                     },
                   ]}
                 >
-                  <Input.Password
-                    prefix={<LockOutlined />}
-                    placeholder={t.pages.signIn.placeholder.password}
-                    allowClear
-                  />
+                  <Input.Password prefix={<LockOutlined />} allowClear />
                 </Form.Item>
 
                 <Form.Item>
                   <Form.Item name='remember' valuePropName='checked' noStyle>
-                    <Checkbox>{t.pages.signIn.label.rememberId}</Checkbox>
+                    <Checkbox>{t("아이디 저장")}</Checkbox>
                   </Form.Item>
 
                   <a className='reset-password' href=''>
-                    {t.pages.signIn.label.resetPassword}
+                    {t("비밀번호 초기화")}
                   </a>
                 </Form.Item>
                 <Divider />
@@ -177,7 +173,7 @@ function App({}: Props) {
                     loading={spinning?.signIn}
                   >
                     <AXFIArrowLogIn fontSize={20} />
-                    {t.button.signIn}
+                    {btnT("로그인")}
                   </Button>
                 </Form.Item>
               </Form>
@@ -194,7 +190,7 @@ function App({}: Props) {
               </Space>
               {import.meta.env.MODE !== "production" && (
                 <div>
-                  API TEST &nbsp;
+                  {t("API TEST")} &nbsp;
                   <Switch
                     checked={isApiTest}
                     onChange={(checked) => {

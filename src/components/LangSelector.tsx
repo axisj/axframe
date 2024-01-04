@@ -1,9 +1,10 @@
-import React from "react";
+import { AXFILanguage } from "@axframe/icon";
 import { IconText } from "@core/components/common";
 import { Dropdown } from "antd";
 import { MenuProps } from "antd/lib/menu";
+import React from "react";
 import { useAppStore } from "stores";
-import { AXFILanguage } from "@axframe/icon";
+import { useI18n } from "../hooks";
 
 interface Props {
   hideLabel?: boolean;
@@ -15,14 +16,16 @@ const LanguageLabel = {
 };
 
 function LangSelector({ hideLabel }: Props) {
+  const { i18n } = useI18n();
   const currentLanguage = useAppStore((s) => s.currentLanguage);
   const setLanguage = useAppStore((s) => s.setLanguage);
 
   const onClickMenu: MenuProps["onClick"] = React.useCallback(
     (info) => {
       setLanguage(info.key);
+      i18n.changeLanguage(info.key);
     },
-    [setLanguage],
+    [i18n, setLanguage],
   );
 
   return (

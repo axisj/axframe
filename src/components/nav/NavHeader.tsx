@@ -4,10 +4,11 @@ import { Tooltip } from "antd";
 import React from "react";
 import { AXFIMenuFold, AXFIMenuUnfold } from "@axframe/icon";
 import { SMixinFlexColumn, SMixinFlexRow } from "@core/styles/emotion";
-import { useI18n } from "@core/hooks/useI18n";
+
 import { IconText } from "@core/components/common";
 import { useAppStore, useUserStore } from "stores";
 import { BrandLogo } from "components/BrandLogo";
+import { useI18n } from "hooks";
 
 interface Props {
   sideMenuOpened?: boolean;
@@ -34,11 +35,11 @@ function NavHeader({}: Props) {
         {sideMenuOpened ? (
           <BrandLogo fontSize={24} />
         ) : (
-          <Tooltip title={t.appName} placement={"right"}>
+          <Tooltip title={t("appName")} placement={"right"}>
             <BrandLogo fontSize={30} />
           </Tooltip>
         )}
-        {sideMenuOpened ? t.appName : ""}
+        {sideMenuOpened ? t("appName") : ""}
       </Logo>
       <ToggleHandle role={"toggle-menu"}>
         {sideMenuOpened ? (

@@ -3,11 +3,11 @@ import { Button, Form, Input, Modal, Popconfirm, Space } from "antd";
 import { API_URL } from "services/apiWrapper";
 import { getAppData } from "@core/utils/store";
 import axios from "axios";
-import { useI18n } from "@core/hooks";
+import { useBtnI18n, useI18n } from "hooks";
 import { DeleteOutlined, DownloadOutlined, EyeOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { IconText } from "../../@core/components/common";
-import { errorDialog } from "../../@core/components/dialogs";
-import { FileDto } from "../../@types";
+import { IconText } from "@core/components/common";
+import { errorDialog } from "@core/components/dialogs";
+import { FileDto } from "@types";
 
 interface Props {
   file?: FileDto;
@@ -17,6 +17,7 @@ interface Props {
 
 function FileUploader({ file, onChangeFile, disabled }: Props) {
   const { t } = useI18n();
+  const btnT = useBtnI18n();
   const [spinning, setSpinning] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
   const [uploadedFile, setUploadedFile] = React.useState<FileDto>();
@@ -152,7 +153,7 @@ function FileUploader({ file, onChangeFile, disabled }: Props) {
           disabled={disabled}
         />
         <Button onClick={handleButtonClick} loading={spinning} disabled={disabled}>
-          {t.button.fileSelect}
+          {btnT("파일선택")}
         </Button>
 
         {uploadedFile && (
@@ -164,7 +165,7 @@ function FileUploader({ file, onChangeFile, disabled }: Props) {
                 setPreviewOpen(true);
               }}
             >
-              {t.button.preview}
+              {btnT("preview")}
             </IconText>
 
             <IconText
@@ -174,17 +175,17 @@ function FileUploader({ file, onChangeFile, disabled }: Props) {
                 window.open(`${API_URL}${uploadedFile?.download}`);
               }}
             >
-              {t.button.download}
+              {btnT("download")}
             </IconText>
 
             <Popconfirm
               title='Delete'
-              description={t.msg.deleteConfirm}
+              description={t("msg.deleteConfirm")}
               icon={<QuestionCircleOutlined style={{ color: "red" }} />}
               onConfirm={handleDel}
             >
               <IconText icon={<DeleteOutlined />} block>
-                {t.button.delete}
+                {btnT("삭제")}
               </IconText>
             </Popconfirm>
           </Space>

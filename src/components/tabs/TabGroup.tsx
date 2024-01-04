@@ -3,7 +3,7 @@ import * as React from "react";
 import { ReactSortable } from "react-sortablejs";
 import { SMixinFlexRow } from "@core/styles/emotion";
 import { usePageTabStore } from "@core/stores/usePageTabStore";
-import { useI18n } from "@core/hooks/useI18n";
+
 import { useLink } from "@core/hooks/useLink";
 import { useLocation } from "react-router-dom";
 import TabItem from "./TabItem";
@@ -12,6 +12,7 @@ import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
 import { TabGroupMenuAction } from "@core/components/contextMenu";
 import { MenuInfo } from "rc-menu/lib/interface";
+import { useI18n } from "hooks";
 
 interface Props {}
 
@@ -32,19 +33,19 @@ function TabGroup(props: Props) {
   const tabGroupMenu: MenuProps["items"] = React.useMemo(() => {
     return [
       {
-        label: t.pageTab.contextMenu.closeTag,
+        label: t("contextMenu.closeTag"),
         key: TabGroupMenuAction.CLOSE_TAB,
       },
       {
-        label: t.pageTab.contextMenu.closeOtherTabs,
+        label: t("contextMenu.closeOtherTabs"),
         key: TabGroupMenuAction.CLOSE_OTHER_TABS,
       },
       {
-        label: t.pageTab.contextMenu.closeTabsToRight,
+        label: t("contextMenu.closeTabsToRight"),
         key: TabGroupMenuAction.CLOSE_TABS_RIGHT,
       },
       {
-        label: t.pageTab.contextMenu.refresh,
+        label: t("contextMenu.refresh"),
         key: TabGroupMenuAction.REFRESH,
       },
     ];
