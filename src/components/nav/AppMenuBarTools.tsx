@@ -1,6 +1,5 @@
 import { FullscreenExitOutlined, FullscreenOutlined } from "@ant-design/icons";
 import { IconText } from "@core/components/common";
-import { useBtnI18n, useI18n } from "@core/hooks";
 import { SMixinFlexRow } from "@core/styles/emotion";
 import styled from "@emotion/styled";
 import { Button, Dropdown } from "antd";
@@ -8,7 +7,8 @@ import React from "react";
 import { User } from "services";
 import { useAppStore, useUserStore } from "stores";
 import { errorHandling } from "utils";
-import { dangerouslySetInnerHTML } from "../../@core/utils/string";
+import { dangerouslySetInnerHTML } from "@core/utils/string";
+import { useBtnI18n, useI18n } from "hooks";
 import { IconLogout, IconUser } from "../icons";
 import UserInfoDropdown from "./UserInfoDropdown";
 

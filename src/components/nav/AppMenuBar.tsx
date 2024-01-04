@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { AppMenu, AppMenuGroup, User } from "services";
-import { useI18n, useLink } from "@core/hooks";
+import { useI18n, useLink } from "hooks";
 import { MenuItem, useAppMenu } from "router";
 import { SMixinFlexRow } from "@core/styles/emotion";
 import { AXFIconBrandAxisj } from "../AXFIcons";

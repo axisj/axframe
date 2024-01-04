@@ -1,6 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
-import { useI18n } from "../../@core/hooks";
+import React from "react";
+import { useI18n } from "hooks";
 import { SMixinFlexColumn } from "../../@core/styles/emotion";
 import { PeatIconEmojiSurpriseDuo } from "../AXFIcons";
 
@@ -23,8 +23,8 @@ function EmptyMsg({ disableImg, title, msg, children, style }: Props) {
             <PeatIconEmojiSurpriseDuo />
           </Img>
         )}
-        <Title>{title ?? t.msg.NotSelectedDetail.title}</Title>
-        <Msg>{msg ?? t.msg.NotSelectedDetail.msg}</Msg>
+        <Title>{title ?? t("선택된 아이템이 없습니다.")}</Title>
+        {msg && <Msg>{msg}</Msg>}
       </div>
       {children && <div>{children}</div>}
     </Container>

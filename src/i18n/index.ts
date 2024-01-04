@@ -2,6 +2,8 @@ import i18n from "i18next";
 import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
+export type LanguageType = "ko" | "en";
+
 const missingLocales: Record<string, any> = {};
 
 i18n
@@ -10,7 +12,7 @@ i18n
   .init({
     fallbackLng: "ko",
     lng: "ko",
-    saveMissing: false,
+    saveMissing: true,
     missingKeyHandler: (lngs, ns, key, fallbackValue, updateMissing, options) => {
       const locale = (() => {
         if (!missingLocales[i18n.language]) {
@@ -37,8 +39,12 @@ i18n
 window["saveMissingKeys"] = () => {
   const locale = missingLocales[i18n.language];
   Object.keys(locale).forEach((ns) => {
-    console.group(`${ns}.json`);
-    console.log('"' + Object.keys(locale[ns]).join('", \n"') + '"');
+    console.group(`${i18n.language}/${ns}.json`);
+    console.log(
+      Object.keys(locale[ns])
+        .map((k) => `"${k}": "${k}"`)
+        .join(", \n"),
+    );
     console.groupEnd();
   });
 };

@@ -1,3 +1,38 @@
 {
-  "loginUserNameLabel": "<b>{{userNm}}</b>님"
+  "loginUserNameLabel": "<b>{{userNm}}</b>님",
+  "contextMenu.closeTag": "탭닫기",
+  "contextMenu.closeOtherTabs": "다른탭닫기",
+  "contextMenu.closeTabsToRight": "오른쪽탭닫기",
+  "contextMenu.refresh": "새로고침",
+  "msg": {
+    "deleteConfirm": "정말 삭제 하시겠습니까?"
+  },
+  "api-error": {
+    "1110": "잘못된 코드 입니다.",
+    "1120": "잘못된 필드값",
+    "1130": "잘못된 형식",
+    "1140": "필드값 누락",
+    "1150": "다운로드 자료를 찾을 수 없습니다.",
+    "1160": "업로드 크기 초과",
+    "1170": "파일 확장자 오류",
+    "1180": "타입 오류",
+    "1190": "파라미터 타입 오류",
+    "1210": "Null Point Exception",
+    "2110": "데이터를 찾을 수 없습니다.",
+    "2120": "삭제 하실 수 없습니다.",
+    "2230": "수정 하실 수 없습니다.",
+    "2240": "저장 하실 수 없습니다.",
+    "2250": "SQL 구문 오류",
+    "2260": "SQL 중복 키 오류",
+    "2270": "SQL DataIntegrityViolation",
+    "4110": "로그인 실패",
+    "4120": "비밀번호 불일치",
+    "4130": "접근 권한 오류",
+    "4140": "Throwable",
+    "4150": "Method Argument",
+    "4160": "Runtime Exception",
+    "4170": "Remote Exception",
+    "4180": "토큰이 만료되었습니다.",
+    "9110": "토큰이 유효하지 않습니다."
+  }
 }

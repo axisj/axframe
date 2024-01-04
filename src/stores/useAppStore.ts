@@ -1,8 +1,7 @@
 import buildStore from "@core/stores/buildStore";
 import { StoreActions } from "@core/stores/types";
 import { ThemeType } from "styles/theme";
-import { LanguageType } from "depk-i18n";
-import i18n from "i18n";
+import i18n, { LanguageType } from "i18n";
 import { AppMenuGroup, AppService } from "../services";
 
 export interface AppModel {

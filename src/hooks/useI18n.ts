@@ -1,5 +1,5 @@
 import koKR from "antd/es/locale/ko_KR";
-import { useTranslation, getI18n, UseTranslationOptions } from "react-i18next";
+import { useTranslation, UseTranslationOptions } from "react-i18next";
 import { useAppStore } from "../stores";
 
 if (koKR.Calendar && koKR.DatePicker) {
@@ -30,5 +30,3 @@ export function useBtnI18n() {
   const { t } = useTranslation("_btn");
   return t;
 }
-
-export { getI18n };
