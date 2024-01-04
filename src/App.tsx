@@ -16,7 +16,7 @@ import { setApiHeader } from "./services/apiWrapper.ts";
 import "i18n";
 
 const App: React.FC = () => {
-  const { t } = useI18n();
+  const { t, antdLocale } = useI18n();
   const { switcher, themes } = useThemeSwitcher();
   const [storeLoaded, setStoreLoaded] = React.useState(false);
   const appStoreLoaded = useAppStore((s) => s.loaded);
@@ -64,6 +64,7 @@ const App: React.FC = () => {
             required: t("'${label}'을(를) 입력해주세요."),
           },
         }}
+        locale={antdLocale}
       >
         {storeLoaded && (
           <BrowserRouter>
