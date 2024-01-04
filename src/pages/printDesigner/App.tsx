@@ -4,7 +4,7 @@ import { Loading, ProgramTitle } from "@core/components/common";
 import { useCallback } from "react";
 import { AXFIRevert } from "@axframe/icon";
 import { PageLayout } from "styles/pageStyled";
-import { useI18n, useUnmountEffect } from "@core/hooks";
+import { useBtnI18n, useI18n, useUnmountEffect } from "hooks";
 import { useDidMountEffect } from "@core/hooks/useDidMountEffect";
 import { usePrintDesignerStore } from "./usePrintDesignerStore.ts";
 import { errorHandling } from "utils/errorHandling";
@@ -16,8 +16,8 @@ import "./printDesigner.css";
 interface Props {}
 
 function App({}: Props) {
-  const { t } = useI18n();
-  const _t = t.pages.testimonial;
+  const { t } = useI18n("print-designer");
+  const btnT = useBtnI18n();
   const urlParams = useParams<{ id: string }>();
 
   const init = usePrintDesignerStore((s) => s.init);
@@ -43,15 +43,15 @@ function App({}: Props) {
   return (
     <Container stretch role={"page-container"}>
       <Header>
-        <ProgramTitle title={_t.title.form}>
+        <ProgramTitle>
           <Button icon={<AXFIRevert />} size='small' type={"text"} onClick={reset}>
-            {t.button.reset}
+            {btnT("초기화")}
           </Button>
         </ProgramTitle>
         <ButtonGroup compact>
           {programFn?.fn02 && (
             <Button type={"primary"} onClick={handleSave}>
-              {t.button.save}
+              {btnT("저장")}
             </Button>
           )}
         </ButtonGroup>
