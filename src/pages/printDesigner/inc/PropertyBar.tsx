@@ -1,44 +1,23 @@
 import styled from "@emotion/styled";
-import Draggable from "react-draggable";
 import { usePrintDesignerStore } from "../usePrintDesignerStore.ts";
 import { PropertyForm } from "./PropertyForm.tsx";
 
 interface Props {}
 
 export function PropertyBar({}: Props) {
-  const [propertyPanelPosition, setPropertyPanelPosition] = usePrintDesignerStore((s) => [
-    s.propertyPanelPosition,
-    s.setPropertyPanelPosition,
-    s.selectedLayerIndexes,
-  ]);
+  const [selectedLayerIndexes] = usePrintDesignerStore((s) => [s.selectedLayerIndexes]);
 
   return (
-    <Draggable
-      bounds='parent'
-      handle='.handle'
-      position={propertyPanelPosition}
-      onStop={(e, data) => {
-        setPropertyPanelPosition({
-          x: data.x,
-          y: data.y,
-        });
-      }}
-    >
-      <Container>
-        <Header className={"handle"}>Property</Header>
-        <Body>
-          <PropertyForm />
-        </Body>
-      </Container>
-    </Draggable>
+    <Container>
+      <Header className={"handle"}>Property</Header>
+      <Body>
+        <PropertyForm />
+      </Body>
+    </Container>
   );
 }
 
 const Container = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-
   border: 1px solid var(--panel-border-color);
   border-radius: 5px;
 `;

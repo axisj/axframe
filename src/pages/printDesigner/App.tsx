@@ -57,7 +57,9 @@ function App({}: Props) {
         </ButtonGroup>
       </Header>
 
-      <PrintDesigner />
+      <Body>
+        <PrintDesigner />
+      </Body>
 
       <Loading active={false} />
     </Container>
@@ -66,6 +68,9 @@ function App({}: Props) {
 
 const Container = styled(PageLayout)``;
 const Header = styled(PageLayout.Header)``;
+const Body = styled(PageLayout.Body)`
+  overflow: hidden;
+`;
 const ButtonGroup = styled(PageLayout.ButtonGroup)``;
 
 export default App;

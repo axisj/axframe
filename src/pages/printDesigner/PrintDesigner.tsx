@@ -1,33 +1,43 @@
-import * as React from "react";
 import styled from "@emotion/styled";
-import { SMixinFlexColumn } from "../../@core/styles/emotion";
+import * as React from "react";
+import { SMixinFlexColumn, SMixinFlexRow } from "@core/styles/emotion";
 import { PrintPage } from "./inc/PrintPage";
+import { PrintPageHeader } from "./inc/PrintPageHeader.tsx";
+import { RightPanel } from "./inc/RightPanel.tsx";
 import { ToolBar } from "./inc/ToolBar";
-import { LayerBar } from "./inc/LayerBar";
-import { PropertyBar } from "./inc/PropertyBar.tsx";
 
 interface Props {}
 
 export function PrintDesigner({}: Props) {
   return (
     <PrintDesignerRoot>
-      <Frame>
-        <PrintPage />
-        <ToolBar />
-        <LayerBar />
-        <PropertyBar />
-      </Frame>
+      <PrintPageBlock>
+        <PrintPageHeader />
+        <ScrollBody>
+          <PrintPage />
+        </ScrollBody>
+      </PrintPageBlock>
+      <ToolBar />
+      <RightPanel />
     </PrintDesignerRoot>
   );
 }
 
 const PrintDesignerRoot = styled.div`
+  ${SMixinFlexRow("stretch", "stretch")};
+  flex: 1;
+  overflow: hidden;
+`;
+const PrintPageBlock = styled.div`
   ${SMixinFlexColumn("stretch", "stretch")};
   flex: 1;
-  padding: 16px;
-  overflow: auto;
+  border: 1px solid var(--panel-border-color);
+  border-radius: 5px;
+  overflow: hidden;
 `;
-const Frame = styled.div`
+const ScrollBody = styled.div`
   flex: 1;
   position: relative;
+  overflow: auto;
+  padding: 16px;
 `;

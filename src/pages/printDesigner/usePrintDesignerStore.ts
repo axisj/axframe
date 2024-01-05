@@ -40,8 +40,8 @@ interface Actions {
 const createState: States = {
   routePath: ROUTES.PRINT_DESIGNER.path,
   toolPanelPosition: {
-    x: 0,
-    y: 0,
+    x: 40,
+    y: 50,
   },
   toolSelected: "SELECTOR",
   layerPanelPosition: {

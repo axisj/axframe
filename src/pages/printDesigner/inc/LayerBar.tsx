@@ -14,45 +14,30 @@ const ToolIcon = {
 };
 
 export function LayerBar({}: Props) {
-  const [layerPanelPosition, setLayerPanelPosition, selectedLayerIndexes, hoverLayerIndex] = usePrintDesignerStore(
-    (s) => [s.layerPanelPosition, s.setLayerPanelPosition, s.selectedLayerIndexes, s.hoverLayerIndex],
-  );
+  const [selectedLayerIndexes, hoverLayerIndex] = usePrintDesignerStore((s) => [
+    s.selectedLayerIndexes,
+    s.hoverLayerIndex,
+  ]);
   const divLayers = usePrintDesignerStore((s) => s.divLayers);
 
   return (
-    <Draggable
-      bounds='parent'
-      handle='.handle'
-      position={layerPanelPosition}
-      onStop={(e, data) => {
-        setLayerPanelPosition({
-          x: data.x,
-          y: data.y,
-        });
-      }}
-    >
-      <Container>
-        <Header className={"handle"}>Layers</Header>
-        <Body>
-          {divLayers.map((divLayer, key) => {
-            return (
-              <LayerItem key={key} hover={hoverLayerIndex === key} selected={selectedLayerIndexes.includes(key)}>
-                {ToolIcon[divLayer.type]}
-                {divLayer.name}
-              </LayerItem>
-            );
-          })}
-        </Body>
-      </Container>
-    </Draggable>
+    <Container>
+      <Header className={"handle"}>Layers</Header>
+      <Body>
+        {divLayers.map((divLayer, key) => {
+          return (
+            <LayerItem key={key} hover={hoverLayerIndex === key} selected={selectedLayerIndexes.includes(key)}>
+              {ToolIcon[divLayer.type]}
+              {divLayer.name}
+            </LayerItem>
+          );
+        })}
+      </Body>
+    </Container>
   );
 }
 
 const Container = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-
   border: 1px solid var(--panel-border-color);
   border-radius: 5px;
 `;

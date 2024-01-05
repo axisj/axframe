@@ -73,13 +73,13 @@ const Container = styled.div`
   left: 0;
   top: 0;
 
-  border: 1px solid var(--panel-border-color);
+  border: 1px solid ${(p) => p.theme.primary_color};
   border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.16);
 `;
 
 const Header = styled.div`
-  background: var(--panel-header-bg);
-  color: var(--panel-header-color);
+  background: ${(p) => p.theme.primary_color};
   cursor: grab;
   padding: 7px 10px;
 `;
@@ -89,7 +89,7 @@ const gutter = 5;
 
 const Body = styled.div`
   ${SMixinFlexRow("stretch", "center", "wrap")};
-  background: #dfdfdf;
+  background: ${(p) => p.theme.axf_border_color};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   width: ${toolWidth * 2 + gutter * 3}px;
@@ -101,7 +101,7 @@ const Tool = styled.div<{ active?: boolean }>`
   font-size: 20px;
   width: ${toolWidth}px;
   height: ${toolWidth}px;
-  border-radius: 2px;
+  border-radius: 4px;
   color: var(--panel-tool-color);
   &:hover {
     background: #fff;
