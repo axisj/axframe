@@ -25,6 +25,7 @@ const Div = styled.div`
 
 const Panel = styled.div`
   flex: 1;
+  ${SMixinFlexColumn("stretch", "stretch")};
 
   ${({ theme }) => {
     return css`
@@ -32,7 +33,6 @@ const Panel = styled.div`
       background: ${theme.form_box_bg};
       box-shadow: ${theme.box_shadow_base};
       border-radius: 4px;
-      padding: 10px;
     `;
   }}
 `;

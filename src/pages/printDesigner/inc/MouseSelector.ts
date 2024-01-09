@@ -1,3 +1,9 @@
+export interface SelectorInfo {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}
 export class MouseSelector {
   div: HTMLDivElement;
   startX: number;
@@ -49,7 +55,7 @@ export class MouseSelector {
     this.active = active;
   }
 
-  getInfo() {
+  getInfo(): SelectorInfo {
     return {
       left: parseInt(this.div.style.left),
       top: parseInt(this.div.style.top),

@@ -1,3 +1,5 @@
+import { SelectorInfo } from "./MouseSelector.ts";
+
 interface FindDivLayerOptions {
   ex: number;
   ey: number;
@@ -21,4 +23,19 @@ export function findDivLayer(divLayers: DivLayer[], sx: number, sy: number, opti
     layerIndex,
     divLayer: layerIndex > -1 ? divLayers[layerIndex] : undefined,
   };
+}
+
+export function findDivLayers(divLayers: DivLayer[], selectorInfo: SelectorInfo) {
+  const { left, top, width, height } = selectorInfo;
+
+  const selectedLayerIndexes: number[] = [];
+
+  for (let i = 0; i < divLayers.length; i++) {
+    const { left: l, top: t, width: w, height: h } = divLayers[i];
+    if (l >= left && l + w <= left + width && t >= top && t + h <= top + height) {
+      selectedLayerIndexes.push(i);
+    }
+  }
+
+  return selectedLayerIndexes;
 }

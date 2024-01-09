@@ -2,7 +2,7 @@ import { RefObject, useEffect } from "react";
 import { usePrintDesignerStore } from "../usePrintDesignerStore";
 import { MouseSelector } from "../inc/MouseSelector";
 import { getRelativePosition } from "../inc/getRelativePosition";
-import { findDivLayer } from "../inc/findDivLayer.ts";
+import { findDivLayer, findDivLayers } from "../inc/findDivLayer.ts";
 
 export function useSelectorTool(divRef: RefObject<HTMLDivElement>) {
   const toolSelected = usePrintDesignerStore((s) => s.toolSelected);
@@ -50,6 +50,10 @@ export function useSelectorTool(divRef: RefObject<HTMLDivElement>) {
           div.appendChild(selector.div);
         }
         selector.setEndPoint(x, y);
+
+        const selectorInfo = selector.getInfo();
+        const selectedLayerIndexes = findDivLayers(divLayers, selectorInfo);
+        setSelectedLayerIndexes(selectedLayerIndexes);
       } else {
         const { layerIndex } = findDivLayer(divLayers, x, y);
         setHoverLayerIndex(layerIndex);

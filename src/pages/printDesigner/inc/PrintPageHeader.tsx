@@ -8,9 +8,10 @@ export function PrintPageHeader({}: Props) {
 }
 
 const Div = styled.div`
-  background: var(--panel-header-bg);
-  color: var(--panel-header-color);
+  ${SMixinFlexRow("center", "center")};
   cursor: grab;
   padding: 7px 10px;
-  ${SMixinFlexRow("center", "center")};
+  background: ${(p) => p.theme.form_box_bg};
+  border-bottom: 1px solid ${(p) => p.theme.axf_border_color};
+  font-weight: bold;
 `;

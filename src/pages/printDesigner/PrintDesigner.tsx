@@ -16,8 +16,8 @@ export function PrintDesigner({}: Props) {
         <ScrollBody>
           <PrintPage />
         </ScrollBody>
+        <ToolBar />
       </PrintPageBlock>
-      <ToolBar />
       <RightPanel />
     </PrintDesignerRoot>
   );
@@ -29,9 +29,10 @@ const PrintDesignerRoot = styled.div`
   overflow: hidden;
 `;
 const PrintPageBlock = styled.div`
+  position: relative;
   ${SMixinFlexColumn("stretch", "stretch")};
   flex: 1;
-  border: 1px solid var(--panel-border-color);
+  border: 1px solid ${(p) => p.theme.axf_border_color};
   border-radius: 5px;
   overflow: hidden;
 `;

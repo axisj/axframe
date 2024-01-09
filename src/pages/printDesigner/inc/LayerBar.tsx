@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import Draggable from "react-draggable";
 import { usePrintDesignerStore } from "../usePrintDesignerStore.ts";
-import { SMixinFlexRow } from "../../../@core/styles/emotion";
+import { SMixinFlexColumn, SMixinFlexRow } from "../../../@core/styles/emotion";
 import { IconFrame, IconImage, IconText } from "../../../components/icon";
 import { css } from "@emotion/react";
 
@@ -38,26 +38,22 @@ export function LayerBar({}: Props) {
 }
 
 const Container = styled.div`
-  border: 1px solid var(--panel-border-color);
-  border-radius: 5px;
+  ${SMixinFlexColumn("stretch", "stretch")};
+  flex: 1;
+  overflow: hidden;
 `;
 
 const Header = styled.div`
-  background: var(--panel-header-bg);
-  color: var(--panel-header-color);
-  cursor: grab;
-  padding: 4px 10px;
+  padding: 8px 10px;
   font-size: 12px;
+  font-weight: bold;
+  border-top: 1px solid ${(p) => p.theme.axf_border_color};
+  border-bottom: 1px solid ${(p) => p.theme.axf_border_color};
 `;
 
 const Body = styled.div`
   background: #fff;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  width: 200px;
   padding: 0;
-  min-height: 100px;
-  max-height: 800px;
   overflow: auto;
 `;
 
