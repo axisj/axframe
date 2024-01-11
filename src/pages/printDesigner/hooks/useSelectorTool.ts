@@ -1,9 +1,10 @@
-import { RefObject, useEffect } from "react";
+import React, { RefObject, useEffect } from "react";
 import { usePrintDesignerStore } from "../usePrintDesignerStore";
 import { MouseSelector } from "../inc/MouseSelector";
 import { getRelativePosition } from "../inc/getRelativePosition";
 import { findDivLayer, findDivLayers } from "../inc/findDivLayer.ts";
 
+const selector = new MouseSelector();
 export function useSelectorTool(divRef: RefObject<HTMLDivElement>) {
   const toolSelected = usePrintDesignerStore((s) => s.toolSelected);
   const divLayers = usePrintDesignerStore((s) => s.divLayers);
@@ -11,43 +12,17 @@ export function useSelectorTool(divRef: RefObject<HTMLDivElement>) {
   const setHoverLayerIndex = usePrintDesignerStore((s) => s.setHoverLayerIndex);
   const setSelectedLayerIndexes = usePrintDesignerStore((s) => s.setSelectedLayerIndexes);
 
-  useEffect(() => {
-    if (!divRef.current) return;
+  const handleMouseMove = React.useCallback(
+    (e: MouseEvent) => {
+      if (!divRef.current) return;
+      const { x, y } = getRelativePosition(divRef.current, e);
 
-    const div = divRef.current;
-    const selector = new MouseSelector();
-
-    const handleMouseDown = (e: MouseEvent) => {
-      if (toolSelected !== "SELECTOR") return;
-
-      const { x, y } = getRelativePosition(div, e);
-      selector.setStartPoint(x, y);
-
-      if (e.target instanceof HTMLDivElement) {
-        const role = e.target.getAttribute("aria-controls");
-        if (role) {
-          return;
-        }
-      }
-
-      const { layerIndex } = findDivLayer(divLayers, x, y);
-      if (layerIndex > -1) {
-        selector.setActive(false);
-        setSelectedLayerIndexes([layerIndex]);
-      } else {
-        setSelectedLayerIndexes([]);
-      }
-
-      document.addEventListener("mouseup", handleMouseUp);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const { x, y } = getRelativePosition(div, e);
+      // console.log("append selector, selector.active =", selector.active, "selector.appended = ", selector.appended);
 
       if (selector.active) {
         if (!selector.appended) {
           selector.setAppend(true);
-          div.appendChild(selector.div);
+          divRef.current.appendChild(selector.div);
         }
         selector.setEndPoint(x, y);
 
@@ -58,25 +33,69 @@ export function useSelectorTool(divRef: RefObject<HTMLDivElement>) {
         const { layerIndex } = findDivLayer(divLayers, x, y);
         setHoverLayerIndex(layerIndex);
       }
-    };
+    },
+    [divLayers, divRef, setHoverLayerIndex, setSelectedLayerIndexes],
+  );
 
-    const handleMouseUp = (e: MouseEvent) => {
+  const handleMouseUp = React.useCallback(
+    (e: MouseEvent) => {
       document.removeEventListener("mouseup", handleMouseUp);
       if (selector.appended) {
-        div.removeChild(selector.div);
+        divRef.current?.removeChild(selector.div);
         selector.setAppend(false);
       }
       selector.setActive(false);
-    };
+    },
+    [divRef],
+  );
 
-    div.addEventListener("mousedown", handleMouseDown);
+  const handleMouseDown = React.useCallback(
+    (e: MouseEvent) => {
+      if (!divRef.current) return;
+
+      if (e.target instanceof HTMLDivElement) {
+        const role = e.target.getAttribute("aria-controls");
+        if (role) {
+          return;
+        }
+      }
+
+      const { x, y } = getRelativePosition(divRef.current, e);
+      selector.setStartPoint(x, y);
+
+      const { layerIndex } = findDivLayer(divLayers, x, y);
+      if (layerIndex > -1) {
+        selector.setActive(false);
+        setSelectedLayerIndexes([layerIndex]);
+      } else {
+        setSelectedLayerIndexes([]);
+      }
+
+      document.addEventListener("mouseup", handleMouseUp);
+    },
+    [divLayers, divRef, handleMouseUp, setSelectedLayerIndexes],
+  );
+
+  useEffect(() => {
+    if (toolSelected !== "SELECTOR") return;
+
+    divRef.current?.addEventListener("mousedown", handleMouseDown);
     document.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      div.removeEventListener("mousedown", handleMouseDown);
+      divRef.current?.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [divLayers, divRef, setHoverLayerIndex, setLayer, setSelectedLayerIndexes, toolSelected]);
+  }, [
+    divLayers,
+    divRef,
+    handleMouseDown,
+    handleMouseMove,
+    setHoverLayerIndex,
+    setLayer,
+    setSelectedLayerIndexes,
+    toolSelected,
+  ]);
 
   return;
 }

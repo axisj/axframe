@@ -4,20 +4,20 @@ import { NodeResizer } from "../inc/NodeResizer";
 import { v4 as uuidv4 } from "uuid";
 import { getRelativePosition } from "../inc/getRelativePosition";
 
+const selector = new NodeResizer();
 export function useResizerTool(divRef: RefObject<HTMLDivElement>) {
   const toolSelected = usePrintDesignerStore((s) => s.toolSelected);
   const appendLayer = usePrintDesignerStore((s) => s.appendLayer);
   const setToolSelected = usePrintDesignerStore((s) => s.setToolSelected);
 
   useEffect(() => {
+    if (toolSelected === "SELECTOR") return;
     if (!divRef.current) return;
 
     const div = divRef.current;
-    const selector = new NodeResizer();
 
     const handleMouseDown = (e: MouseEvent) => {
       if (!divRef.current) return;
-      if (toolSelected === "SELECTOR") return;
 
       div.appendChild(selector.div);
       const { x, y } = getRelativePosition(div, e);
