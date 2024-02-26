@@ -276,7 +276,7 @@ const darkComponents = {
     defaultBg: darkAntdColors.border_color_base,
   },
   Tooltip: {
-    colorBgDefault: darkAntdColors.component_background,
+    colorBgBase: darkAntdColors.component_background,
   },
   Tabs: {
     cardBg: darkAntdColors.component_background,
