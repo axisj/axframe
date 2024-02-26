@@ -31,7 +31,7 @@ if (modalDefaultProps) {
   modalDefaultProps.maskClosable = false;
   modalDefaultProps.centered = true;
   modalDefaultProps.closeIcon = <AXFIClose fontSize={16} />;
-  modalDefaultProps.bodyStyle = { padding: 0 };
+  modalDefaultProps.styles = { body: { padding: 0 } };
   modalDefaultProps.className = "axframe-modal";
   modalDefaultProps.title = null;
   modalDefaultProps.footer = null;

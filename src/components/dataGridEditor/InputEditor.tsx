@@ -71,7 +71,7 @@ export function InputEditor<T = Record<string, any>>({
     return (
       <Container>
         <Input
-          bordered={false}
+          variant={"borderless"}
           autoFocus={true}
           onFocus={(evt) => evt.target.select()}
           size={"small"}

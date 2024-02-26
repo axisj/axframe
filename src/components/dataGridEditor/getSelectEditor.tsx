@@ -74,7 +74,7 @@ export function getSelectEditor(options: { label: string; value: any }[]) {
     return (
       <Container>
         <Select
-          bordered={false}
+          variant={"borderless"}
           size={"small"}
           // autoFocus
           // open
