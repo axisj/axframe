@@ -19,6 +19,7 @@ if (koKR.Calendar && koKR.DatePicker) {
     "12월",
   ];
   koKR.DatePicker.lang.shortWeekDays = koKR.Calendar.lang.shortWeekDays = ["일", "월", "화", "수", "목", "금", "토"];
+  koKR.DatePicker.lang.cellDateFormat = koKR.Calendar.lang.cellDateFormat = "D";
 }
 
 export function useI18n(ns?: string | string[], options?: UseTranslationOptions<any>) {
