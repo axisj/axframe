@@ -3,7 +3,7 @@ import { ApiError } from "./ApiError";
 import { ApiErrorCode } from "../@types";
 import { getAppData, setAppData } from "../@core/utils/store";
 import { useUserStore } from "../stores";
-import { delay } from "../@core/utils/thread/timing";
+import { delay } from "@axframe/utils";
 
 export const API_PHASE = import.meta.env.MODE;
 export const API_URL = (() => {

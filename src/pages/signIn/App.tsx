@@ -3,7 +3,7 @@ import { IdcardOutlined, LockOutlined } from "@ant-design/icons";
 import { AXFIArrowLogIn, AXFIMoon, AXFISun } from "@axframe/icon";
 import { IconText } from "@core/components/common";
 import { SMixinFlexColumn, SMixinFlexRow } from "@core/styles/emotion";
-import { getTrimNonEmptyRegExp } from "@core/utils/formPatterns/getTrimNonEmptyRegExp";
+import { getTrimNonEmptyRegExp } from "@axframe/utils";
 import styled from "@emotion/styled";
 import type { TourProps } from "antd";
 import { Button, Checkbox, Divider, Form, Input, Space, Switch, Tour } from "antd";

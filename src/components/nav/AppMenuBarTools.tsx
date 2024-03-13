@@ -7,7 +7,7 @@ import React from "react";
 import { User } from "services";
 import { useAppStore, useUserStore } from "stores";
 import { errorHandling } from "utils";
-import { dangerouslySetInnerHTML } from "@core/utils/string";
+import { dangerouslySetInnerHTML } from "@axframe/utils";
 import { useBtnI18n, useI18n } from "hooks";
 import { IconLogout, IconUser } from "../icons";
 import UserInfoDropdown from "./UserInfoDropdown";

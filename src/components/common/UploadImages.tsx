@@ -5,7 +5,7 @@ import { RcFile, UploadProps } from "antd/es/upload";
 import { getAppData } from "@core/utils/store";
 import { UploadOutlined } from "@ant-design/icons";
 import { v4 as uuidv4 } from "uuid";
-import { getFileNameAndExt } from "@core/utils/string";
+import { getFileNameAndExt } from "@axframe/utils";
 import { API_URL } from "services/apiWrapper";
 
 export interface UploadImage {

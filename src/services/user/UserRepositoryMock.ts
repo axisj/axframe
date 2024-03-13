@@ -1,4 +1,4 @@
-import { delay } from "@core/utils/thread/timing";
+import { delay } from "@axframe/utils";
 import {
   GetProgramFnRequest,
   GetProgramFnResponse,

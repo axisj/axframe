@@ -5,7 +5,7 @@ import {
   GetProgramAuthorityRequest,
   GetProgramAuthorityResponse,
 } from "./AppRepositoryInterface";
-import { delay } from "@core/utils/thread/timing";
+import { delay } from "@axframe/utils";
 import { getAppMenuMockData } from "services/serviceMockUpData";
 
 export class AppRepositoryMock extends AppRepositoryInterface {

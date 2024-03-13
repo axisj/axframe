@@ -18,7 +18,7 @@ import {
 import { PasswordProps } from "antd/lib/input";
 import { BaseOptionType } from "rc-cascader";
 import { AXFIArrowDown, AXFIArrowLeft, AXFIArrowUp, AXFIClose } from "@axframe/icon";
-import { fnFilterLabel } from "@core/utils/antd";
+import { fnFilterLabel } from "@axframe/utils";
 
 /*
  * Modal
