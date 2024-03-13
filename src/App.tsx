@@ -12,7 +12,7 @@ import "@core/utils/console";
 import "./customizeAntd";
 import { getAppData } from "./@core/utils/store";
 import { useI18n } from "./hooks";
-import { setApiHeader } from "./services/apiWrapper.ts";
+import { setApiHeader } from "./services/apiWrapper";
 import "i18n";
 
 const App: React.FC = () => {

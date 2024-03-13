@@ -13,8 +13,8 @@ import { useBtnI18n, useDidMountEffect, useI18n, useSpinning } from "hooks";
 import React from "react";
 import { UserService } from "services";
 import { useAppStore, useUserStore } from "stores";
-import { mediaMin } from "../../styles/mediaQueries.ts";
-import { alpha } from "../../styles/palette/colorUtil.ts";
+import { mediaMin } from "../../styles/mediaQueries";
+import { alpha } from "../../styles/palette/colorUtil";
 import { errorHandling } from "../../utils";
 
 interface Props {

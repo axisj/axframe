@@ -5,7 +5,7 @@ import RequireAuth from "./RequireAuth";
 import RestrictAuth from "./RestrictAuth";
 import { ROUTES, ROUTES_LIST } from "./Routes";
 import { useAppMenu } from "./useAppMenu";
-import { EXAMPLE_ROUTERS } from "../@core/router/exampleRouter.ts";
+import { EXAMPLE_ROUTERS } from "../@core/router/exampleRouter";
 import { StoreSpinner } from "../@core/components";
 
 const FrameDefault = React.lazy(() => import("pageFrame/FrameDefault"));
